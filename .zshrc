@@ -70,7 +70,7 @@ battery() {
     fi
 }
 
-PS1="%F{245}%*%f%(?..%F{202} :(%f) %F{green}%n@%f%F{cyan}%m%f %F{025}\$(parse_git_branch)%f%F{green}\$(k8s_context)%f%F{166}\$(battery)%f"$'\n'"%F{252}%~%f %# "
+PS1="%F{245}%*%f %F{green}%n@%f%F{cyan}%m%f %F{025}\$(parse_git_branch)%f%F{green}\$(k8s_context)%f%F{166}\$(battery)%f"$'\n'"%F{252}%~%f %# "
 
 
 # ---------- KEY BINDINGS ---------- 
