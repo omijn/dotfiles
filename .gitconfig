@@ -1,0 +1,15 @@
+[user]
+	# set in ~/.gitconfig_local
+[include]
+	path = ~/.gitconfig_local
+[alias]
+	s = status
+	d = diff
+	l = log --oneline --color --graph --abbrev-commit
+	c = checkout
+[core]
+	editor = vim
+[pull]
+	rebase = false
+[init]
+	defaultBranch = main
