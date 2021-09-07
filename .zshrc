@@ -91,7 +91,7 @@ if [ -f ~/.zshrc.local ]; then
 	source ~/.zshrc.local
 fi
 
-if [ -f ~/.zshrc_aliases.local ]; then
-	source ~/.zshrc_aliases.local
+if [ -f ~/.zsh_aliases.local ]; then
+	source ~/.zsh_aliases.local
 fi
 

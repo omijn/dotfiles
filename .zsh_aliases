@@ -22,4 +22,3 @@ function k_use_context() {
 
 alias k-mini='k_use_context minikube'
 alias dot='/usr/bin/git --git-dir=$HOME/.cfg --work-tree=$HOME'
-
