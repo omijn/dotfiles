@@ -12,8 +12,7 @@ compinit
 # End of lines added by compinstall
 
 # partial completion suggestions
-zstyle ':completion:*' list-suffixes zstyle ':completion:*' expand prefix suffix 
-
+# zstyle ':completion:*' list-suffixes zstyle ':completion:*' expand prefix suffix
 autoload -U colors && colors
 
 # a lot of the configuration in this file is from https://scriptingosx.com/2019/06/moving-to-zsh/
@@ -24,11 +23,9 @@ setopt SHARE_HISTORY
 # append to history
 setopt APPEND_HISTORY
 # adds commands as they are typed, not at shell exit
-setopt INC_APPEND_HISTORY
+# setopt INC_APPEND_HISTORY
 # expire duplicates first
 setopt HIST_EXPIRE_DUPS_FIRST
-# expire duplicates first
-setopt HIST_EXPIRE_DUPS_FIRST 
 # do not store duplications
 setopt HIST_IGNORE_DUPS
 #ignore duplicates when searching
@@ -36,16 +33,13 @@ setopt HIST_FIND_NO_DUPS
 # removes blank lines from history
 setopt HIST_REDUCE_BLANKS
 # enable corrections
-setopt CORRECT
-setopt CORRECT_ALL
+# setopt CORRECT
+# setopt CORRECT_ALL
 
 # allows functions in prompt
 setopt PROMPT_SUBST
 # ---------- END ZSH OPTIONS ----------- 
 
-if [ -f ~/.zsh_aliases ]; then
-    . ~/.zsh_aliases
-fi
 
 
 # colors: https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg
@@ -76,9 +70,28 @@ PS1="%F{245}%*%f %F{green}%n@%f%F{cyan}%m%f %F{025}\$(parse_git_branch)%f%F{gree
 # ---------- KEY BINDINGS ---------- 
 bindkey '^[[A' up-line-or-search # up arrow bindkey
 bindkey '^R' history-incremental-search-backward
+bindkey "^A" beginning-of-line
+bindkey "^E" end-of-line
+bindkey -s "^T" "^[Isudo !!^[A"
 # ----------  END KEY BINDINGS ----------  
 
 
 # managing dotfiles: 
 # https://www.ackama.com/blog/posts/the-best-way-to-store-your-dotfiles-a-bare-git-repository-explained
 # https://www.atlassian.com/git/tutorials/dotfiles
+# https://antelo.medium.com/how-to-manage-your-dotfiles-with-git-f7aeed8adf8b
+
+source ~/.zsh-z.plugin.zsh
+
+if [ -f ~/.zsh_aliases ]; then
+    . ~/.zsh_aliases
+fi
+
+if [ -f ~/.zshrc.local ]; then
+	source ~/.zshrc.local
+fi
+
+if [ -f ~/.zshrc_aliases.local ]; then
+	source ~/.zshrc_aliases.local
+fi
+

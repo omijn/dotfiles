@@ -1,7 +1,7 @@
 [user]
-	# set in ~/.gitconfig_local
+	# set in ~/.gitconfig.local
 [include]
-	path = ~/.gitconfig_local
+	path = ~/.gitconfig.local
 [alias]
 	s = status
 	d = diff
