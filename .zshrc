@@ -83,6 +83,7 @@ bindkey -s "^T" "^[Isudo !!^[A"
 
 source ~/.zsh-z.plugin.zsh
 
+
 if [ -f ~/.zsh_aliases ]; then
     . ~/.zsh_aliases
 fi
@@ -95,3 +96,5 @@ if [ -f ~/.zsh_aliases.local ]; then
 	source ~/.zsh_aliases.local
 fi
 
+source <(kubectl completion zsh)
+complete -F __start_kubectl k
