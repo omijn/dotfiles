@@ -11,6 +11,10 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+# provides compatibility with bash completions
+autoload bashcompinit
+bashcompinit
+
 # partial completion suggestions
 # zstyle ':completion:*' list-suffixes zstyle ':completion:*' expand prefix suffix
 autoload -U colors && colors
@@ -96,5 +100,6 @@ if [ -f ~/.zsh_aliases.local ]; then
 	source ~/.zsh_aliases.local
 fi
 
-source <(kubectl completion zsh)
+alias k='kubectl'
 complete -F __start_kubectl k
+[[ $commands[kubectl] ]] && source <(kubectl completion zsh)
