@@ -31,6 +31,7 @@ function k_use_context() {
 
 alias k-mini='k_use_context minikube'
 alias dot='/usr/bin/git --git-dir=$HOME/.cfg --work-tree=$HOME'
+alias ldot='/usr/bin/git --git-dir=$HOME/.cfg.local --work-tree=$HOME'
 function jqq() {
 	jq -R -r '. as $line | try fromjson catch $line'
 }
