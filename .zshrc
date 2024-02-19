@@ -68,7 +68,7 @@ battery() {
     fi
 }
 
-PS1="%F{245}%*%f %F{green}%n@%f%F{cyan}%m%f %F{025}\$(parse_git_branch)%f%F{green}\$(k8s_context)%f%F{166}\$(battery)%f"$'\n'"%F{252}%~%f %# "
+PS1="%F{245}%*%f %F{green}%n@%f%F{cyan}%m%f %F{025}\$(parse_git_branch)%f%F{166}\$(battery)%f"$'\n'"%F{252}%~%f %# "
 
 
 # ---------- KEY BINDINGS ---------- 
@@ -77,6 +77,7 @@ bindkey '^R' history-incremental-search-backward
 bindkey "^A" beginning-of-line
 bindkey "^E" end-of-line
 bindkey -s "^T" "^[Isudo !!^[A"
+bindkey '^K' vi-cmd-mode
 # ----------  END KEY BINDINGS ----------  
 
 
@@ -87,6 +88,17 @@ bindkey -s "^T" "^[Isudo !!^[A"
 
 source ~/.zsh-z.plugin.zsh
 
+# GOPATH is where downloaded source code (GOPATH/pkg/mod) and compiled commands (GOPATH/bin) are stored
+export GOPATH=${HOME}/go
+
+# GOBIN is a subdirectory of GOPATH where compiled commands are installed to when using `go install`
+export GOBIN=${GOPATH}/bin
+
+# add the `go` command to PATH
+export PATH=${PATH}:/usr/local/go/bin
+
+# add GOBIN to path so that compiled programs are accessible
+export PATH=${PATH}:${GOBIN}
 
 if [ -f ~/.zsh_aliases ]; then
     . ~/.zsh_aliases
@@ -100,6 +112,3 @@ if [ -f ~/.zsh_aliases.local ]; then
 	source ~/.zsh_aliases.local
 fi
 
-alias k='kubectl'
-complete -F __start_kubectl k
-[[ $commands[kubectl] ]] && source <(kubectl completion zsh)
