@@ -1,5 +1,5 @@
 git clone --bare https://github.com/omijn/dotfiles.git $HOME/.cfg
-function config {
+function config() {
    /usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME $@
 }
 mkdir -p .config-backup
