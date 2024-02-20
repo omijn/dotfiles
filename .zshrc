@@ -61,11 +61,13 @@ k8s_context() {
 }
 
 battery() {
-    battery_status=$(cat /sys/class/power_supply/BAT0/status)
-    perc=$(cat /sys/class/power_supply/BAT0/capacity)
-    if [ $perc -le 20 ]; then
-        echo "[$battery_status:$perc%%]"
-    fi
+	if [ -e /sys/class/power_supply/BAT0/status ]; then
+    	battery_status=$(cat /sys/class/power_supply/BAT0/status)
+    	perc=$(cat /sys/class/power_supply/BAT0/capacity)
+    	if [ $perc -le 20 ]; then
+	        echo "[$battery_status:$perc%%]"
+	    fi
+	fi
 }
 
 PS1="%F{245}%*%f %F{green}%n@%f%F{cyan}%m%f %F{025}\$(parse_git_branch)%f%F{166}\$(battery)%f"$'\n'"%F{252}%~%f %# "
