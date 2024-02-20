@@ -7,6 +7,14 @@ bindkey -v
 # The following lines were added by compinstall
 zstyle :compinstall filename '$HOME/.zshrc'
 
+if [ ! -e ~/.zsh-z.plugin.zsh ]; then
+	echo "Downloading z plugin..."
+	wget https://raw.githubusercontent.com/agkozak/zsh-z/master/zsh-z.plugin.zsh -O ~/.zsh-z.plugin.zsh
+	wget https://raw.githubusercontent.com/agkozak/zsh-z/master/_zshz -O ~/_zshz
+fi	
+	
+source ~/.zsh-z.plugin.zsh
+
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
@@ -18,6 +26,7 @@ bashcompinit
 # partial completion suggestions
 # zstyle ':completion:*' list-suffixes zstyle ':completion:*' expand prefix suffix
 autoload -U colors && colors
+zstyle ':completion:*' menu select
 
 # a lot of the configuration in this file is from https://scriptingosx.com/2019/06/moving-to-zsh/
 # ---------- ZSH OPTIONS ----------- 
@@ -88,7 +97,6 @@ bindkey '^K' vi-cmd-mode
 # https://www.atlassian.com/git/tutorials/dotfiles
 # https://antelo.medium.com/how-to-manage-your-dotfiles-with-git-f7aeed8adf8b
 
-source ~/.zsh-z.plugin.zsh
 
 # GOPATH is where downloaded source code (GOPATH/pkg/mod) and compiled commands (GOPATH/bin) are stored
 export GOPATH=${HOME}/go
