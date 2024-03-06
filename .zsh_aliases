@@ -16,7 +16,7 @@ alias p8='ping 8.8.8.8'
 alias pg='ping google.com'
 
 function lower() {
-	echo "$1" | tr "[:upper:]" "[:lower:]"
+	echo -n "$1" | tr "[:upper:]" "[:lower:]"
 }
 
 function upper() {
